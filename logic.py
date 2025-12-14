@@ -116,21 +116,6 @@ class DatabaseManager:
             return cur.fetchall()[0][0]
    
    
->>>>>>> 9381504 (Добавление больше функций)
-    
-    def get_rating(self):
-        conn = sqlite3.connect(self.database)
-        with conn:
-            cur = conn.cursor()
-            cur.execute('''
-            SELECT users.user_name, COUNT(winners.prize_id) AS win_count
-            FROM winners
-            INNER JOIN users ON winners.user_id = users.user_id
-            GROUP BY winners.user_id
-            ORDER BY DESC win_count DESC
-            LIMIT 10             
-            ''')
-            return cur.fetchall()
   
 def hide_img(img_name):
     image = cv2.imread(f'img/{img_name}')
